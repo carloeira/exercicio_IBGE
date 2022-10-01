@@ -22,5 +22,19 @@ function procuraEstado() {
 
 }
 
+function procuraCidade () {
+    let idCidade = document.getElementById('estado').value
+    fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${idCidade}/microrregioes`)
+        .then( (resposta) => resposta.json() )
+        .then( (cidade) => {
+            cidade.forEach( (cadaCidade) => {
+                document.getElementById('cidade').innerHTML += `
+                    <option value="${cadaCidade.id}">${cadaCidade.nome}</option>
+                `;
+            } );
+        } );
+
+}
+
 
 
