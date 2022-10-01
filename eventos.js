@@ -1,4 +1,6 @@
-fetch('https://servicodados.ibge.gov.br/api/v1/localidades/regioes')
+let classificar = '?orderBy=nome'
+
+fetch('https://servicodados.ibge.gov.br/api/v1/localidades/regioes'+classificar)
     .then( (resposta) => resposta.json() )
     .then( (regioes) => {
         regioes.forEach( (cadaRegiao) => {
@@ -10,7 +12,7 @@ fetch('https://servicodados.ibge.gov.br/api/v1/localidades/regioes')
 
 function procuraEstado() {
     let idEstado = document.getElementById('regiao').value
-    fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/regioes/${idEstado}/estados`)
+    fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/regioes/${idEstado}/estados`+classificar)
         .then( (resposta) => resposta.json() )
         .then( (estados) => {
             estados.forEach( (cadaEstado) => {
@@ -24,7 +26,7 @@ function procuraEstado() {
 
 function procuraCidade () {
     let idCidade = document.getElementById('estado').value
-    fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${idCidade}/microrregioes`)
+    fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${idCidade}/microrregioes`+classificar)
         .then( (resposta) => resposta.json() )
         .then( (cidade) => {
             cidade.forEach( (cadaCidade) => {
