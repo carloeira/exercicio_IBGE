@@ -21,7 +21,6 @@ function procuraEstado() {
                 `;
             } );
         } );
-
 }
 
 function procuraCidade () {
@@ -35,7 +34,6 @@ function procuraCidade () {
                 `;
             } );
         } );
-
 }
 
 
